@@ -364,7 +364,7 @@ python-versions = ">=3.7"
 
 [[package]]
 name = "mecha"
-version = "0.49.1"
+version = "0.50.1"
 description = "A powerful Minecraft command library"
 category = "main"
 optional = false
@@ -1071,8 +1071,8 @@ mdurl = [
     {file = "mdurl-0.1.1.tar.gz", hash = "sha256:f79c9709944df218a4cdb0fcc0b0c7ead2f44594e3e84dc566606f04ad749c20"},
 ]
 mecha = [
-    {file = "mecha-0.49.1-py3-none-any.whl", hash = "sha256:5db5f229724c12e170bc39c1c1d33b96df26bdeec104ef3d14a6d032b1d3be8d"},
-    {file = "mecha-0.49.1.tar.gz", hash = "sha256:6c3babe75aa3439fac4ebe0a0786fc29521de24a413467ba1e93f048dfeb5683"},
+    {file = "mecha-0.50.1-py3-none-any.whl", hash = "sha256:9a6609b36ce795966d89814dac4dc6921fa2f61eeccdf20139f24d8dc38c4560"},
+    {file = "mecha-0.50.1.tar.gz", hash = "sha256:c3ffee3150ceee08f2fa5864ccbf5864f9971a6a9a2e6c96f11b360e9cba972c"},
 ]
 mypy-extensions = [
     {file = "mypy_extensions-0.4.3-py2.py3-none-any.whl", hash = "sha256:090fedd75945a69ae91ce1303b5824f428daf5a028d2f6ab8a299250a846f15d"},
