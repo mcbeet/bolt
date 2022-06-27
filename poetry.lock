@@ -556,7 +556,7 @@ yaml = ["PyYaml (>=5.2)"]
 
 [[package]]
 name = "python-semantic-release"
-version = "7.28.1"
+version = "7.29.3"
 description = "Automatic Semantic Versioning for Python projects"
 category = "dev"
 optional = false
@@ -576,7 +576,7 @@ twine = ">=3,<4"
 
 [package.extras]
 dev = ["tox", "isort", "black"]
-docs = ["Sphinx (==1.3.6)"]
+docs = ["Sphinx (==1.3.6)", "Jinja2 (==3.0.3)"]
 mypy = ["mypy", "types-requests"]
 test = ["coverage (>=5,<6)", "pytest (>=5,<6)", "pytest-xdist (>=1,<2)", "pytest-mock (>=2,<3)", "responses (==0.13.3)", "mock (==1.3.0)"]
 
@@ -825,7 +825,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "315f87451fb9ea3c24fcd67e4eae0f61e0673e627d85e4382b0ae32ec92be9f0"
+content-hash = "ba689c255f45dbcaa3589a5c6a2e0c4d03b0eecac1db14a6c7824abf0a6b12b2"
 
 [metadata.files]
 atomicwrites = [
@@ -1190,8 +1190,8 @@ python-gitlab = [
     {file = "python_gitlab-3.4.0-py3-none-any.whl", hash = "sha256:251b63f0589d51f854516948c84e9eb8df26e1e9dea595cf86b43f17c43007dd"},
 ]
 python-semantic-release = [
-    {file = "python-semantic-release-7.28.1.tar.gz", hash = "sha256:d7f82b3d4c06b304d07689b8a1c7d0d448ff07c2ab81cd810c4f2f900f24c599"},
-    {file = "python_semantic_release-7.28.1-py3-none-any.whl", hash = "sha256:319c3e811d6e10bc3f0e967419eae0e5e9ba1e6745aa2fd94dd24e3995541ca2"},
+    {file = "python-semantic-release-7.29.3.tar.gz", hash = "sha256:c78e612b4dfcae8fd12b870a9e7f6672cb9469f25e578f2fb311343320897937"},
+    {file = "python_semantic_release-7.29.3-py3-none-any.whl", hash = "sha256:acea02e010c64e518e4cf00bd2df3ecbf21bc0046271418d5bcd3968768d6b22"},
 ]
 pywin32-ctypes = [
     {file = "pywin32-ctypes-0.2.0.tar.gz", hash = "sha256:24ffc3b341d457d48e8922352130cf2644024a4ff09762a2261fd34c36ee5942"},
