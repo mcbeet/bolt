@@ -268,7 +268,7 @@ def get_bolt_parsers(
         ),
         "bolt:import": AlternativeParser(
             [
-                ImportLocationConstraint(parsers["resource_location_or_tag"]),
+                ImportLocationConstraint(delegate("resource_location_or_tag")),
                 parse_python_import,
             ]
         ),
