@@ -30,7 +30,7 @@ mecha = ">=0.54.9"
 pytest = "^7.1.2"
 black = "^22.6.0"
 isort = "^5.10.1"
-python-semantic-release = "^7.28.1"
+python-semantic-release = "^7.31.4"
 pytest-insta = "^0.1.11"
 lectern = ">=0.24.0"
 
