@@ -14,11 +14,11 @@ tests-no-zope = ["cloudpickle", "coverage[toml] (>=5.0.2)", "hypothesis", "mypy 
 
 [[package]]
 name = "beet"
-version = "0.80.1"
+version = "0.82.1"
 description = "The Minecraft pack development kit"
 category = "main"
 optional = false
-python-versions = ">=3.8,<4.0"
+python-versions = ">=3.10,<4.0"
 
 [package.dependencies]
 click = ">=8.1.3,<9.0.0"
@@ -26,7 +26,7 @@ click-help-colors = ">=0.9.1,<0.10.0"
 colorama = {version = "*", markers = "sys_platform == \"win32\""}
 Jinja2 = ">=3.1.2,<4.0.0"
 nbtlib = ">=1.12.1,<2.0.0"
-pathspec = ">=0.10.1,<0.11.0"
+pathspec = ">=0.10.2,<0.11.0"
 pydantic = ">=1.10.2,<2.0.0"
 PyYAML = ">=6.0,<7.0"
 toml = ">=0.10.2,<0.11.0"
@@ -847,8 +847,8 @@ attrs = [
     {file = "attrs-22.1.0.tar.gz", hash = "sha256:29adc2665447e5191d0e7c568fde78b21f9672d344281d0c6e1ab085429b22b6"},
 ]
 beet = [
-    {file = "beet-0.80.1-py3-none-any.whl", hash = "sha256:499ffc70888afd0a81a41ba432dcbd5a7c08c016b9476b0e587624476fd0e17f"},
-    {file = "beet-0.80.1.tar.gz", hash = "sha256:4ccda72bef9ccfffc34dbefe8ec479852f1ed6e3da459feadaf71d0ddfefb530"},
+    {file = "beet-0.82.1-py3-none-any.whl", hash = "sha256:21c96a94a854fea0b5f0b8b393b9c11f2e1c38a6c10707fffc5d6db764b6104e"},
+    {file = "beet-0.82.1.tar.gz", hash = "sha256:f4e1b2d542f079282bd39ee5e5cf02117dd0a19ef3369546f5001066ab811843"},
 ]
 black = [
     {file = "black-22.10.0-1fixedarch-cp310-cp310-macosx_11_0_x86_64.whl", hash = "sha256:5cc42ca67989e9c3cf859e84c2bf014f6633db63d1cbdf8fdb666dcd9e77e3fa"},
