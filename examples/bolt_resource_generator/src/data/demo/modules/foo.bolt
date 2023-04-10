@@ -1,0 +1,16 @@
+function (pack / "load"):
+    say hello
+
+tick = pack / "tick"
+
+function_tag minecraft:tick {
+    "values": [
+        (-tick)
+    ]
+}
+
+function tick:
+    say tick
+
+    as @e[tag=pack.entity]
+        say entity
