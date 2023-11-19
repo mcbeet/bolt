@@ -1,5 +1,6 @@
-_bolt_lineno = [1, 12, 16, 22, 32, 38, 40, 50, 55, 60, 64, 69, 73], [1, 2, 5, 6, 8, 9, 11, 13, 14, 15, 17, 18, 19]
+_bolt_lineno = [1, 13, 17, 27, 38, 44, 46, 56, 61, 66, 70, 75, 79], [1, 2, 5, 6, 8, 9, 11, 13, 14, 15, 17, 18, 19]
 _bolt_helper_children = _bolt_runtime.helpers['children']
+_bolt_helper_get_dup = _bolt_runtime.helpers['get_dup']
 _bolt_helper_branch = _bolt_runtime.helpers['branch']
 _bolt_helper_get_attribute = _bolt_runtime.helpers['get_attribute']
 _bolt_helper_interpolate_entity = _bolt_runtime.helpers['interpolate_entity']
@@ -17,26 +18,31 @@ with _bolt_runtime.scope() as _bolt_var16:
         _bolt_var1 = rhs
         _bolt_var2 = GlobalScore
         _bolt_var0 = _bolt_var0(_bolt_var1, _bolt_var2)
-        with _bolt_helper_branch(_bolt_var0) as _bolt_condition:
-            if _bolt_condition:
-                _bolt_var3 = self
-                _bolt_var3 = _bolt_helper_get_attribute(_bolt_var3, 'name')
-                _bolt_var3 = _bolt_helper_interpolate_entity(_bolt_var3, _bolt_refs[0])
-                _bolt_var4 = rhs
-                _bolt_var4 = _bolt_helper_get_attribute(_bolt_var4, 'name')
-                _bolt_var4 = _bolt_helper_interpolate_entity(_bolt_var4, _bolt_refs[1])
-                _bolt_runtime.commands.append(_bolt_helper_replace(_bolt_refs[5], arguments=_bolt_helper_children([_bolt_var3, _bolt_refs[2], _bolt_refs[3], _bolt_var4, _bolt_refs[4]])))
-        _bolt_var0 = _bolt_helper_operator_not(_bolt_var0)
-        with _bolt_helper_branch(_bolt_var0) as _bolt_condition:
+        _bolt_var3 = _bolt_var0
+        _bolt_var4 = _bolt_helper_get_dup(_bolt_var0)
+        if _bolt_var4 is not None:
+            _bolt_var3 = _bolt_var4()
+        with _bolt_helper_branch(_bolt_var3) as _bolt_condition:
             if _bolt_condition:
                 _bolt_var5 = self
                 _bolt_var5 = _bolt_helper_get_attribute(_bolt_var5, 'name')
-                _bolt_var5 = _bolt_helper_interpolate_entity(_bolt_var5, _bolt_refs[6])
+                _bolt_var5 = _bolt_helper_interpolate_entity(_bolt_var5, _bolt_refs[0])
                 _bolt_var6 = rhs
-                _bolt_var6 = _bolt_helper_interpolate_numeric(_bolt_var6, _bolt_refs[7])
-                _bolt_runtime.commands.append(_bolt_helper_replace(_bolt_refs[9], arguments=_bolt_helper_children([_bolt_var5, _bolt_refs[8], _bolt_var6])))
-        _bolt_var7 = self
-        return _bolt_var7
+                _bolt_var6 = _bolt_helper_get_attribute(_bolt_var6, 'name')
+                _bolt_var6 = _bolt_helper_interpolate_entity(_bolt_var6, _bolt_refs[1])
+                _bolt_runtime.commands.append(_bolt_helper_replace(_bolt_refs[5], arguments=_bolt_helper_children([_bolt_var5, _bolt_refs[2], _bolt_refs[3], _bolt_var6, _bolt_refs[4]])))
+        _bolt_var3 = _bolt_helper_operator_not(_bolt_var3)
+        _bolt_var7 = _bolt_var3
+        with _bolt_helper_branch(_bolt_var7) as _bolt_condition:
+            if _bolt_condition:
+                _bolt_var8 = self
+                _bolt_var8 = _bolt_helper_get_attribute(_bolt_var8, 'name')
+                _bolt_var8 = _bolt_helper_interpolate_entity(_bolt_var8, _bolt_refs[6])
+                _bolt_var9 = rhs
+                _bolt_var9 = _bolt_helper_interpolate_numeric(_bolt_var9, _bolt_refs[7])
+                _bolt_runtime.commands.append(_bolt_helper_replace(_bolt_refs[9], arguments=_bolt_helper_children([_bolt_var8, _bolt_refs[8], _bolt_var9])))
+        _bolt_var10 = self
+        return _bolt_var10
     _bolt_var0 = type
     _bolt_var1 = 'GlobalScore'
     _bolt_var2 = ()

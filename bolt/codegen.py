@@ -240,15 +240,28 @@ class Accumulator:
             self.root_scope = previous_root
 
     @contextmanager
-    def if_statement(self, condition: str):
+    def if_statement(self, condition: str, use_dup: bool = False):
         """Emit if statement."""
-        branch = self.helper("branch", condition)
+        new_condition = self.make_variable()
+        self.statement(f"{new_condition} = {condition}")
+
+        # Create duplicate of condition, this duplicate may be
+        # optimized away by the parser.
+        if use_dup:
+            dup = self.make_variable()
+            value = self.helper("get_dup", condition)
+            self.statement(f"{dup} = {value}")
+            self.statement(f"if {dup} is not None:")
+            with self.block():
+                self.statement(f"{new_condition} = {dup}()")
+
+        branch = self.helper("branch", new_condition)
         self.statement(f"with {branch} as _bolt_condition:")
         with self.block():
             self.statement(f"if _bolt_condition:")
             with self.block():
                 yield
-        self.last_condition = condition
+        self.last_condition = new_condition
 
     @contextmanager
     def else_statement(self):
@@ -838,7 +851,18 @@ class Codegen(Visitor):
         acc: Accumulator,
     ) -> Generator[AstNode, Optional[List[str]], Optional[List[str]]]:
         condition = yield from visit_single(node.arguments[0], required=True)
-        with acc.if_statement(condition):
+        with acc.if_statement(condition, use_dup=True):
+            yield from visit_body(cast(AstRoot, node.arguments[1]), acc)
+        return []
+
+    @rule(AstCommand, identifier="if:condition:body:nodup")
+    def if_statement_no_dup(
+        self,
+        node: AstCommand,
+        acc: Accumulator,
+    ) -> Generator[AstNode, Optional[List[str]], Optional[List[str]]]:
+        condition = yield from visit_single(node.arguments[0], required=True)
+        with acc.if_statement(condition, use_dup=False):
             yield from visit_body(cast(AstRoot, node.arguments[1]), acc)
         return []
 

@@ -1,4 +1,4 @@
-_bolt_lineno = [1, 8, 13, 15, 26, 39], [1, 2, 3, 4, 5, 6]
+_bolt_lineno = [1, 8, 14, 16, 27, 40], [1, 2, 3, 4, 5, 6]
 _bolt_helper_branch = _bolt_runtime.helpers['branch']
 _bolt_helper_children = _bolt_runtime.helpers['children']
 _bolt_memo_storage_bdd640fb06671ad11c80317fa3b1799d = None
@@ -8,36 +8,37 @@ with _bolt_runtime.scope() as _bolt_var0:
         _bolt_var0 = n
         _bolt_var1 = 1
         _bolt_var0 = _bolt_var0 <= _bolt_var1
-        with _bolt_helper_branch(_bolt_var0) as _bolt_condition:
+        _bolt_var2 = _bolt_var0
+        with _bolt_helper_branch(_bolt_var2) as _bolt_condition:
             if _bolt_condition:
-                _bolt_var2 = n
-                return _bolt_var2
-        _bolt_var3 = n
+                _bolt_var3 = n
+                return _bolt_var3
+        _bolt_var4 = n
         global _bolt_memo_storage_bdd640fb06671ad11c80317fa3b1799d
         if _bolt_memo_storage_bdd640fb06671ad11c80317fa3b1799d is None:
             _bolt_memo_storage_bdd640fb06671ad11c80317fa3b1799d = _bolt_runtime.memo.registry[__file__][_bolt_refs[0], 0]
         _bolt_memo_invocation_path_bdd640fb06671ad11c80317fa3b1799d = _bolt_runtime.get_nested_location()
-        _bolt_memo_invocation_bdd640fb06671ad11c80317fa3b1799d = _bolt_memo_storage_bdd640fb06671ad11c80317fa3b1799d[(_bolt_memo_invocation_path_bdd640fb06671ad11c80317fa3b1799d, _bolt_var3,)]
+        _bolt_memo_invocation_bdd640fb06671ad11c80317fa3b1799d = _bolt_memo_storage_bdd640fb06671ad11c80317fa3b1799d[(_bolt_memo_invocation_path_bdd640fb06671ad11c80317fa3b1799d, _bolt_var4,)]
         if _bolt_memo_invocation_bdd640fb06671ad11c80317fa3b1799d.cached:
             _bolt_runtime.memo.restore(_bolt_runtime, _bolt_memo_invocation_bdd640fb06671ad11c80317fa3b1799d)
             (result,) = _bolt_memo_invocation_bdd640fb06671ad11c80317fa3b1799d.bindings
         else:
             with _bolt_runtime.memo.record(_bolt_runtime, _bolt_memo_invocation_bdd640fb06671ad11c80317fa3b1799d, _bolt_memo_invocation_path_bdd640fb06671ad11c80317fa3b1799d, __name__):
-                _bolt_var4 = fib
-                _bolt_var5 = n
-                _bolt_var6 = 1
-                _bolt_var5 = _bolt_var5 - _bolt_var6
-                _bolt_var4 = _bolt_var4(_bolt_var5)
-                _bolt_var7 = fib
-                _bolt_var8 = n
-                _bolt_var9 = 2
-                _bolt_var8 = _bolt_var8 - _bolt_var9
-                _bolt_var7 = _bolt_var7(_bolt_var8)
-                _bolt_var4 = _bolt_var4 + _bolt_var7
-                result = _bolt_var4
+                _bolt_var5 = fib
+                _bolt_var6 = n
+                _bolt_var7 = 1
+                _bolt_var6 = _bolt_var6 - _bolt_var7
+                _bolt_var5 = _bolt_var5(_bolt_var6)
+                _bolt_var8 = fib
+                _bolt_var9 = n
+                _bolt_var10 = 2
+                _bolt_var9 = _bolt_var9 - _bolt_var10
+                _bolt_var8 = _bolt_var8(_bolt_var9)
+                _bolt_var5 = _bolt_var5 + _bolt_var8
+                result = _bolt_var5
             _bolt_memo_invocation_bdd640fb06671ad11c80317fa3b1799d.bindings = (result,)
-        _bolt_var10 = result
-        return _bolt_var10
+        _bolt_var11 = result
+        return _bolt_var11
 _bolt_var1 = _bolt_helper_replace(_bolt_refs[1], commands=_bolt_helper_children(_bolt_var0))
 ---
 output = _bolt_var1

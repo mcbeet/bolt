@@ -254,6 +254,17 @@ execute unless score global is_awesome matches 0 run scoreboard players set glob
 scoreboard players operation global bolt_basic.tmp2 = global is_awesome
 execute unless score global bolt_basic.tmp1 matches 0 run scoreboard players operation global bolt_basic.tmp2 = global force_awesomeness
 execute unless score global bolt_basic.tmp2 matches 0 run say hello
+execute unless score global is_awesome matches 0 run say "If without else"
+scoreboard players operation global bolt_basic.tmp3 = global is_awesome
+execute unless score global bolt_basic.tmp3 matches 0 run say "If with else"
+scoreboard players set global bolt_basic.tmp4 1
+execute unless score global bolt_basic.tmp3 matches 0 run scoreboard players set global bolt_basic.tmp4 0
+execute unless score global bolt_basic.tmp4 matches 0 run say "Else"
+scoreboard players operation global bolt_basic.tmp5 = global is_awesome
+execute unless score global bolt_basic.tmp5 matches 0 run say "If with elif"
+scoreboard players set global bolt_basic.tmp6 1
+execute unless score global bolt_basic.tmp5 matches 0 run scoreboard players set global bolt_basic.tmp6 0
+execute unless score global bolt_basic.tmp6 matches 0 run function demo:foo/nested_execute_2
 say this is from demo:utils
 execute if data storage demo:random_data {value: 42} run say json loaded successfully
 give @s bow{CustomModelData: 7}
@@ -338,6 +349,15 @@ say 2
 ```mcfunction
 say yes
 execute if score @s bar matches 1 run say with bar
+```
+
+`@function demo:foo/nested_execute_2`
+
+```mcfunction
+scoreboard players set global bolt_basic.tmp7 1
+execute unless score global is_awesome matches 0 run scoreboard players set global bolt_basic.tmp7 0
+scoreboard players operation global bolt_basic.tmp8 = global bolt_basic.tmp7
+execute unless score global bolt_basic.tmp8 matches 0 run say "Elif"
 ```
 
 `@function demo:foo/tree_0/0_7`

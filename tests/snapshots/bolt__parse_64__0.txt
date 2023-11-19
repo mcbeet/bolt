@@ -27,7 +27,7 @@ for i in "abc":
             <class 'mecha.ast.AstCommand'>
               location: SourceLocation(pos=20, lineno=2, colno=5)
               end_location: SourceLocation(pos=46, lineno=3, colno=14)
-              identifier: 'if:condition:body'
+              identifier: 'if:condition:body:nodup'
               arguments:
                 <class 'bolt.ast.AstExpressionBinary'>
                   location: SourceLocation(pos=23, lineno=2, colno=8)

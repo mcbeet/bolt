@@ -607,6 +607,19 @@ is_awesome = Cond("is_cool") and Cond("is_nice")
 if is_awesome or Cond("force_awesomeness"):
     say hello
 
+if is_awesome:
+    say "If without else"
+
+if is_awesome:
+    say "If with else"
+else:
+    say "Else"
+
+if is_awesome:
+    say "If with elif"
+elif not is_awesome:
+    say "Elif"
+
 from ./utils import something
 something()
 

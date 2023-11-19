@@ -1,4 +1,5 @@
-_bolt_lineno = [1, 10, 11, 15, 23, 27], [1, 2, 3, 4, 6, 7]
+_bolt_lineno = [1, 11, 12, 20, 29, 33], [1, 2, 3, 4, 6, 7]
+_bolt_helper_get_dup = _bolt_runtime.helpers['get_dup']
 _bolt_helper_branch = _bolt_runtime.helpers['branch']
 _bolt_helper_get_rebind = _bolt_runtime.helpers['get_rebind']
 _bolt_helper_children = _bolt_runtime.helpers['children']
@@ -9,23 +10,28 @@ with _bolt_runtime.scope() as _bolt_var0:
         _bolt_var0 = 'init'
         result = _bolt_var0
         _bolt_var1 = value
-        with _bolt_helper_branch(_bolt_var1) as _bolt_condition:
+        _bolt_var2 = _bolt_var1
+        _bolt_var3 = _bolt_helper_get_dup(_bolt_var1)
+        if _bolt_var3 is not None:
+            _bolt_var2 = _bolt_var3()
+        with _bolt_helper_branch(_bolt_var2) as _bolt_condition:
             if _bolt_condition:
-                _bolt_var2 = 1
+                _bolt_var4 = 1
                 _bolt_rebind = _bolt_helper_get_rebind(result)
-                result = _bolt_var2
+                result = _bolt_var4
                 if _bolt_rebind is not None:
                     result = _bolt_rebind(result)
-        _bolt_var1 = _bolt_helper_operator_not(_bolt_var1)
-        with _bolt_helper_branch(_bolt_var1) as _bolt_condition:
+        _bolt_var2 = _bolt_helper_operator_not(_bolt_var2)
+        _bolt_var5 = _bolt_var2
+        with _bolt_helper_branch(_bolt_var5) as _bolt_condition:
             if _bolt_condition:
-                _bolt_var3 = 0
+                _bolt_var6 = 0
                 _bolt_rebind = _bolt_helper_get_rebind(result)
-                result = _bolt_var3
+                result = _bolt_var6
                 if _bolt_rebind is not None:
                     result = _bolt_rebind(result)
-        _bolt_var4 = result
-        return _bolt_var4
+        _bolt_var7 = result
+        return _bolt_var7
 _bolt_var1 = _bolt_helper_replace(_bolt_refs[0], commands=_bolt_helper_children(_bolt_var0))
 ---
 output = _bolt_var1

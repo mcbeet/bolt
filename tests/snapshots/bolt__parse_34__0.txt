@@ -30,7 +30,7 @@ if a == 1:
     <class 'mecha.ast.AstCommand'>
       location: SourceLocation(pos=6, lineno=2, colno=1)
       end_location: SourceLocation(pos=26, lineno=3, colno=10)
-      identifier: 'if:condition:body'
+      identifier: 'if:condition:body:nodup'
       arguments:
         <class 'bolt.ast.AstExpressionBinary'>
           location: SourceLocation(pos=9, lineno=2, colno=4)

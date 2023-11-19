@@ -35,7 +35,7 @@ def fib(n):
             <class 'mecha.ast.AstCommand'>
               location: SourceLocation(pos=16, lineno=2, colno=5)
               end_location: SourceLocation(pos=43, lineno=3, colno=17)
-              identifier: 'if:condition:body'
+              identifier: 'if:condition:body:nodup'
               arguments:
                 <class 'bolt.ast.AstExpressionBinary'>
                   location: SourceLocation(pos=19, lineno=2, colno=8)

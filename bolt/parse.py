@@ -21,6 +21,7 @@ __all__ = [
     "parse_decorator",
     "AssignmentTargetParser",
     "IfElseLoweringParser",
+    "RemoveDupFromIsolatedIf",
     "VanillaReturnHandler",
     "BreakContinueConstraint",
     "parse_deferred_root",
@@ -641,6 +642,7 @@ def create_bolt_root_parser(parser: Parser, macro_handler: "MacroHandler"):
     parser = DocstringHandler(parser)
     parser = VanillaReturnHandler(parser)
     parser = IfElseLoweringParser(parser)
+    parser = RemoveDupFromIsolatedIf(parser)
     parser = BreakContinueConstraint(
         parser,
         allowed_scopes={
@@ -1241,6 +1243,59 @@ class IfElseLoweringParser:
 
             previous = command.identifier
             result.append(command)
+
+        if changed:
+            node = replace(node, commands=AstChildren(result))
+
+        return node
+
+
+@dataclass
+class RemoveDupFromIsolatedIf:
+    """
+    Parser that removes the duplication of the condition from if-statements without an else.
+    Should be called after IfElseLoweringParser!
+    """
+
+    parser: Parser
+
+    def __call__(self, stream: TokenStream) -> AstRoot:
+        node: AstRoot = self.parser(stream)
+
+        changed = False
+        result: List[AstCommand] = []
+
+        commands = iter(node.commands)
+        previous_if_index: int | None = None
+
+        for i, command in enumerate(commands):
+            if not command:
+                break
+
+            # If we get an 'if' and there is a previous 'if' without 'else', we remove the
+            # duplication from the previous 'if'.
+            if command.identifier == "if:condition:body":
+                if previous_if_index is not None:
+                    result[previous_if_index] = replace(
+                        result[previous_if_index], identifier="if:condition:body:nodup"
+                    )
+                    changed = True
+
+                previous_if_index = i
+
+            # If we get an 'else', we ignore the previous 'if'.
+            # A previous 'if' is guaranteed by IfElseLoweringParser.
+            elif command.identifier == "else:body":
+                previous_if_index = None
+
+            result.append(command)
+
+        # Check for a remaining 'if' after all commands were processed.
+        if previous_if_index is not None:
+            result[previous_if_index] = replace(
+                result[previous_if_index], identifier="if:condition:body:nodup"
+            )
+            changed = True
 
         if changed:
             node = replace(node, commands=AstChildren(result))

@@ -1,42 +1,63 @@
 _bolt_lineno = [1], [1]
+_bolt_helper_get_dup = _bolt_runtime.helpers['get_dup']
 _bolt_helper_branch = _bolt_runtime.helpers['branch']
 _bolt_helper_operator_not = _bolt_runtime.helpers['operator_not']
 _bolt_helper_children = _bolt_runtime.helpers['children']
 _bolt_helper_replace = _bolt_runtime.helpers['replace']
-with _bolt_runtime.scope() as _bolt_var4:
+with _bolt_runtime.scope() as _bolt_var16:
     _bolt_var0 = 1
-    with _bolt_helper_branch(_bolt_var0) as _bolt_condition:
+    _bolt_var1 = _bolt_var0
+    _bolt_var2 = _bolt_helper_get_dup(_bolt_var0)
+    if _bolt_var2 is not None:
+        _bolt_var1 = _bolt_var2()
+    with _bolt_helper_branch(_bolt_var1) as _bolt_condition:
         if _bolt_condition:
             _bolt_runtime.commands.extend(_bolt_refs[0].commands)
-    _bolt_var0 = _bolt_helper_operator_not(_bolt_var0)
-    with _bolt_helper_branch(_bolt_var0) as _bolt_condition:
+    _bolt_var1 = _bolt_helper_operator_not(_bolt_var1)
+    _bolt_var3 = _bolt_var1
+    with _bolt_helper_branch(_bolt_var3) as _bolt_condition:
         if _bolt_condition:
-            _bolt_var1 = 2
-            with _bolt_helper_branch(_bolt_var1) as _bolt_condition:
+            _bolt_var4 = 2
+            _bolt_var5 = _bolt_var4
+            _bolt_var6 = _bolt_helper_get_dup(_bolt_var4)
+            if _bolt_var6 is not None:
+                _bolt_var5 = _bolt_var6()
+            with _bolt_helper_branch(_bolt_var5) as _bolt_condition:
                 if _bolt_condition:
                     _bolt_runtime.commands.extend(_bolt_refs[1].commands)
-            _bolt_var1 = _bolt_helper_operator_not(_bolt_var1)
-            with _bolt_helper_branch(_bolt_var1) as _bolt_condition:
+            _bolt_var5 = _bolt_helper_operator_not(_bolt_var5)
+            _bolt_var7 = _bolt_var5
+            with _bolt_helper_branch(_bolt_var7) as _bolt_condition:
                 if _bolt_condition:
-                    _bolt_var2 = 3
-                    with _bolt_helper_branch(_bolt_var2) as _bolt_condition:
+                    _bolt_var8 = 3
+                    _bolt_var9 = _bolt_var8
+                    _bolt_var10 = _bolt_helper_get_dup(_bolt_var8)
+                    if _bolt_var10 is not None:
+                        _bolt_var9 = _bolt_var10()
+                    with _bolt_helper_branch(_bolt_var9) as _bolt_condition:
                         if _bolt_condition:
                             _bolt_runtime.commands.extend(_bolt_refs[2].commands)
-                    _bolt_var2 = _bolt_helper_operator_not(_bolt_var2)
-                    with _bolt_helper_branch(_bolt_var2) as _bolt_condition:
+                    _bolt_var9 = _bolt_helper_operator_not(_bolt_var9)
+                    _bolt_var11 = _bolt_var9
+                    with _bolt_helper_branch(_bolt_var11) as _bolt_condition:
                         if _bolt_condition:
-                            _bolt_var3 = 4
-                            with _bolt_helper_branch(_bolt_var3) as _bolt_condition:
+                            _bolt_var12 = 4
+                            _bolt_var13 = _bolt_var12
+                            _bolt_var14 = _bolt_helper_get_dup(_bolt_var12)
+                            if _bolt_var14 is not None:
+                                _bolt_var13 = _bolt_var14()
+                            with _bolt_helper_branch(_bolt_var13) as _bolt_condition:
                                 if _bolt_condition:
                                     _bolt_runtime.commands.extend(_bolt_refs[3].commands)
-                            _bolt_var3 = _bolt_helper_operator_not(_bolt_var3)
-                            with _bolt_helper_branch(_bolt_var3) as _bolt_condition:
+                            _bolt_var13 = _bolt_helper_operator_not(_bolt_var13)
+                            _bolt_var15 = _bolt_var13
+                            with _bolt_helper_branch(_bolt_var15) as _bolt_condition:
                                 if _bolt_condition:
                                     _bolt_runtime.commands.extend(_bolt_refs[4].commands)
     _bolt_runtime.commands.append(_bolt_refs[5])
-_bolt_var5 = _bolt_helper_replace(_bolt_refs[6], commands=_bolt_helper_children(_bolt_var4))
+_bolt_var17 = _bolt_helper_replace(_bolt_refs[6], commands=_bolt_helper_children(_bolt_var16))
 ---
-output = _bolt_var5
+output = _bolt_var17
 ---
 _bolt_refs[0]
 <class 'mecha.ast.AstRoot'>
