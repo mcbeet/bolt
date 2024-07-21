@@ -75,6 +75,7 @@ from mecha import (
     AdjacentConstraint,
     AlternativeParser,
     AstChildren,
+    AstError,
     AstCommand,
     AstJson,
     AstNode,
@@ -1101,6 +1102,9 @@ class DecoratorResolver:
         result: List[AstCommand] = []
 
         for command in node.commands:
+            if isinstance(command, AstError):
+                continue
+
             if isinstance(command, AstStatement) and isinstance(
                 decorator := command.arguments[0], AstDecorator
             ):
@@ -1186,6 +1190,9 @@ class VanillaReturnHandler:
         result: List[AstCommand] = []
 
         for command in node.commands:
+            if isinstance(command, AstError):
+                continue
+
             if command.identifier == "return:value" and command.arguments:
                 changed = True
 
@@ -1226,6 +1233,9 @@ class IfElseLoweringParser:
         previous = ""
 
         for command in commands:
+            if isinstance(command, AstError):
+                continue
+
             if command.identifier in ["elif:condition:body", "else:body"]:
                 if previous not in ["if:condition:body", "elif:condition:body"]:
                     exc = InvalidSyntax(
@@ -1238,6 +1248,9 @@ class IfElseLoweringParser:
                 elif_chain = [command]
 
                 for command in commands:
+                    if isinstance(command, AstError):
+                        continue
+
                     if command.identifier not in ["elif:condition:body", "else:body"]:
                         break
                     elif_chain.append(command)
@@ -1289,6 +1302,9 @@ class BreakContinueConstraint:
 
         if not loop:
             for command in node.commands:
+                if isinstance(command, AstError):
+                    continue
+
                 if command.identifier in ["break", "continue"]:
                     exc = InvalidSyntax(
                         f'Can only use "{command.identifier}" in loops.'
@@ -1758,6 +1774,9 @@ class ProcMacroExpansion:
         node: AstRoot = self.parser(stream)
 
         for command in node.commands:
+            if isinstance(command, AstError):
+                continue
+
             stack: List[AstCommand] = [command]
 
             while command.arguments and isinstance(
@@ -2075,6 +2094,9 @@ class DocstringHandler:
         result: List[AstCommand] = []
 
         for command in node.commands:
+            if isinstance(command, AstError):
+                continue
+
             if (
                 isinstance(command, AstStatement)
                 and command.arguments
@@ -2199,6 +2221,9 @@ class DeferredRootBacktracker:
         commands: List[AstCommand] = []
 
         for command in node.commands:
+            if isinstance(command, AstError):
+                continue 
+
             if command.arguments and isinstance(
                 body := command.arguments[-1], AstClassRoot
             ):
@@ -2281,6 +2306,9 @@ class LexicalScopeConstraint:
 
         if isinstance(node, AstRoot):
             for command in node.commands:
+                if isinstance(command, AstError):
+                    continue
+
                 if command.identifier in self.command_identifiers:
                     name, _, _ = command.identifier.partition(":")
                     exc = InvalidSyntax(
@@ -2399,7 +2427,6 @@ class UnpackParser:
 
         node = AstUnpack(type="dict" if prefix.value == "**" else "list", value=node)
         return set_location(node, prefix, node.value)
-
 
 @dataclass
 class UnpackConstraint:
