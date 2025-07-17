@@ -1,0 +1,15 @@
+id: demo
+require:
+  - bolt
+  - bolt.contrib.resource_generator
+
+data_pack:
+  load: "src"
+
+pipeline:
+  - mecha
+
+meta:
+  bolt:
+    entrypoint:
+      - "*"
