@@ -1,3 +1,8 @@
+> [!IMPORTANT]
+> This repository is archived. Development moved to the [`beet` monorepo](https://github.com/mcbeet/beet/tree/beta/packages/bolt).
+
+---
+
 # Bolt
 
 [![GitHub Actions](https://github.com/mcbeet/bolt/workflows/CI/badge.svg)](https://github.com/mcbeet/bolt/actions)
